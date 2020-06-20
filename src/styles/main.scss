@@ -1,0 +1,9 @@
+//first import fonts, colors, resets, settings, etc
+@import './base/fonts.scss';
+@import './base/colors.scss';
+@import './base/resets.scss';
+
+//components
+
+@import './components/layout.scss';
+@import './components/navigation.scss';

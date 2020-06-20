@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+//import stylesheets
+import './styles/main.scss';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

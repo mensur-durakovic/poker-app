@@ -1,0 +1,91 @@
+.poker-navigation{
+
+    &-icon{
+        font-size: $medium-font-size;
+        color: $black !important;
+    }
+
+    &-nav{
+        background: white !important;
+        color: $black !important;
+        border-right: 1px solid $border !important;
+    }
+
+    &-navitem{
+        background: white !important;
+        font-size: $base-font-size !important;
+        border-bottom: 1px solid $border !important;
+        cursor: pointer !important;
+
+        &-active{
+            font-size: $base-font-size !important;
+            background: #402060 !important;
+            background-color: #402060 !important;
+            color: white !important;
+            cursor: pointer !important;
+            
+            //nav item text
+            & > .sidenav---navtext---1AE_f {
+                color: white !important;
+            }
+            & > .sidenav---navicon---3gCRo {
+                color: white !important;
+
+                & > svg {
+                    color: white !important;
+                }
+    
+            }
+        }
+
+        &:hover{
+            background: #402060 !important;
+            background-color: #402060 !important;
+            color: white !important;
+
+            //nav item text
+            & > .sidenav---navtext---1AE_f {
+                color: white !important;
+            }
+            & > .sidenav---navicon---3gCRo {
+                color: white !important;
+
+                & > svg {
+                    color: white !important;
+                }
+    
+            }
+        }
+        
+
+        //nav item text
+        & > .sidenav---navtext---1AE_f {
+            color: black !important;
+        }
+
+        //nav-item icon
+        & > .sidenav---navicon---3gCRo {
+            font-size: $medium-font-size;
+            color: $black !important;
+        }
+
+    }
+
+    &-toggle{
+
+        & > span{
+            background-color: $black !important;
+        }
+    }
+}
+/* 
+.sidenav---sidenav---_2tBP{
+    background-color: white !important;
+    color: $black !important;
+} */
+
+.sidenav---selected---1EK3y{
+    background: #402060 !important;
+    background-color: #402060 !important;
+    color: white !important;
+}

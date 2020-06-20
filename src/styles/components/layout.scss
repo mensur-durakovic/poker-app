@@ -1,9 +1,16 @@
+.site-wrapper{
+    width: 100%;
+    height: 100%;
+}
+
 .layout-container{
     margin-left: 65px;
-    padding: 65px 20px;
+    width: 100%;
+    height: 100%;
 
     &-expanded{
         margin-left: 240px;
-        padding: 65px 20px;
+        width: 100%;
+        height: 100%;
     }
 }

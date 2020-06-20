@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,14 +15,13 @@ import {
   ACCOUNT,
 } from "../../constants/navigation";
 
-export default function Navigation(props) {
-  const [activeItem, setActiveItem] = useState(EQUITY_CALC.keyName);
-console.log(props);
+function Navigation(props) {
+  const { expanded, toggleNavigation, activeItem, setActiveItem } = props;
   return (
     <SideNav
       className="poker-navigation-nav"
-      expanded={props.expanded}
-      onToggle={props.toggleNavigation}
+      expanded={expanded}
+      onToggle={toggleNavigation}
       onSelect={(selected) => {
         console.log("selected", selected);
         setActiveItem(selected);
@@ -32,7 +32,7 @@ console.log(props);
         <NavItem
           eventKey={EQUITY_CALC.keyName}
           navitemClassName={`poker-navigation-navitem${
-            activeItem === EQUITY_CALC.keyName ? "-active" : ""
+            props.activeItem === EQUITY_CALC.keyName ? "-active" : ""
           }`}
         >
           <NavIcon>
@@ -83,3 +83,10 @@ console.log(props);
     </SideNav>
   );
 }
+Navigation.propTypes = {
+  expanded: PropTypes.bool.isRequired,
+  toggleNavigation: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
+  setActiveItem: PropTypes.func.isRequired,
+};
+export default Navigation;

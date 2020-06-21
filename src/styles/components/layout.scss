@@ -5,12 +5,13 @@
 
 .layout-container{
     margin-left: 65px;
-    width: 100%;
+    width: calc(100% - 65px);
     height: 100%;
-
+    background-color: $poker-table-background;
+    
     &-expanded{
         margin-left: 240px;
-        width: 100%;
+        width: calc(100% - 240px);
         height: 100%;
     }
 }

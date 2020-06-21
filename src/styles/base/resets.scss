@@ -5,5 +5,9 @@ html, body, #root {
     color: $black;
     font-family: 'Roboto', sans-serif;
     font-size: $base-font-size;
-    overflow-x: hidden;
+    overflow-x: auto;
+}
+
+button{
+    font-family: 'Roboto', sans-serif;
 }

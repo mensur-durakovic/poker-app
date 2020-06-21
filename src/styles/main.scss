@@ -4,7 +4,12 @@
 @import './base/resets.scss';
 
 //components
-
 @import './components/layout.scss';
 @import './components/navigation.scss';
-@import './components/poker-desk.scss';
+
+//equity-calc component
+@import './components/equity-calculator.scss';
+@import './components/desk.scss';
+
+//flop stats component
+@import './components/flop-stats.scss';

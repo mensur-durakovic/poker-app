@@ -4,11 +4,14 @@ import PickersWrapper from '../components/equityCalculator/picker/pickersWrapper
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import * as actions from "../store/actions/index";
 
 export default function EquityCalculatorPage() {
-
+    const dispatch = useDispatch();
     const resetCardsHandler = () => {
         console.log("resetCardsHandler!");
+        dispatch(actions.resetCards());
     }
 
     return (

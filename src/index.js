@@ -8,9 +8,19 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
+import pokerStatsReducer from "./store/reducers/pokerStats";
+
+const store = createStore(
+  pokerStatsReducer,
+);
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

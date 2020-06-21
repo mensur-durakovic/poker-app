@@ -1,5 +1,6 @@
 import React from 'react'
 import Desk from '../components/equityCalculator/desk/desk';
+import PickersWrapper from '../components/equityCalculator/picker/pickersWrapper';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
@@ -19,9 +20,7 @@ export default function EquityCalculatorPage() {
                     Reset Cards
                 </button>
             </div>
-            <div>
-                card picker
-            </div>
+            <PickersWrapper/>
         </div>
     )
 }

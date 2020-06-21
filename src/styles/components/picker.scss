@@ -1,0 +1,65 @@
+.picker {
+  width: 210px;
+  border-radius: 15px;
+  border: 1px solid $picker-border-color;
+  margin-bottom: 90px;
+  position: relative;
+  margin: 0 15px 40px 15px;
+
+  @media (min-width: 768px) {
+    margin: 0 15px 40px 15px;
+    width: 275px;
+  }
+  &-suit {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 60px;
+    border: 1px solid $picker-border-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $picker-suit-symbol-bg;
+
+    & > img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+
+    & img {
+      cursor: pointer;
+      width: 54px;
+      height: 80px;
+      margin: 0 5px 10px 5px;
+
+      &:first-child {
+        margin-left: 70px;
+      }
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 55px;
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+    }
+  }
+}

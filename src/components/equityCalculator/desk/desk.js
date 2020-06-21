@@ -27,7 +27,7 @@ export default function Desk(props) {
                 <CardPair title='Player 8'/>
             </div>
             <div className='desk-bottom'>
-                <CardPair title='Player 1'/>
+                <CardPair title='Player 1' activeCard={2}/>
                 <CardPair title='Player 9'/>
             </div>
             <div className='desk-left'>

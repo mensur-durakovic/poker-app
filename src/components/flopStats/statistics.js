@@ -22,7 +22,7 @@ export default function Statistics() {
       <div className="flop-stats-statistics-body">
         <div className="flop-stats-statistics-body-upper">
           {statisticsDataUpper.map((s) => (
-            <div className="flop-stats-statistics-body-upper-row">
+            <div className="flop-stats-statistics-body-upper-row" key={s.name}>
               <div className="flop-stats-statistics-body-upper-row-title">
                 {s.name}
               </div>
@@ -36,7 +36,7 @@ export default function Statistics() {
         </div>
         <div className="flop-stats-statistics-body-lower">
         {statisticsDataLower.map((s) => (
-            <div className="flop-stats-statistics-body-upper-row">
+            <div className="flop-stats-statistics-body-upper-row" key={s.name}>
               <div className="flop-stats-statistics-body-upper-row-title">
                 {s.name}
               </div>

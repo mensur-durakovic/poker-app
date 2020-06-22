@@ -1,1 +1,7 @@
-export { setActiveDeskCard, pickCard, resetCards } from "./pokerStats";
+export {
+  setActiveDeskCard,
+  pickCard,
+  resetCards,
+  randomizeBoard,
+  clearBoard,
+} from "./pokerStats";

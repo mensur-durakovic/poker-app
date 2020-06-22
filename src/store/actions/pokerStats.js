@@ -20,3 +20,15 @@ export const resetCards = () => {
     type: actionTypes.RESET_CARDS,
   };
 };
+
+export const randomizeBoard = () => {
+  return {
+    type: actionTypes.RANDOMIZE_BOARD,
+  };
+};
+export const clearBoard = () => {
+  console.log("clearBoard called");
+  return {
+    type: actionTypes.CLEAR_BOARD,
+  };
+};

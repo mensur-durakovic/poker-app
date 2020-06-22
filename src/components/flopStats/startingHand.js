@@ -2,7 +2,7 @@ import React from "react";
 import SliderVertical from "./sliderVertical";
 import SliderHorizontal from "./sliderHorizontal";
 import Square from "./square";
-import { startingHandSquares, boardSquares } from "../../utils/flopStatsData";
+import { startingHandSquares } from "../../utils/flopStatsData";
 
 export default function StartingHand() {
   return (

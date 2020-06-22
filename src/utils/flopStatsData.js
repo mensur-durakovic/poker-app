@@ -1,0 +1,328 @@
+const sc = {
+  RED: "red",
+  GREEN: "green",
+  BLUE: "blue",
+  YELLOW: "yellow",
+  GRAY: "gray",
+};
+
+export const startingHandSquares = [
+  [
+    { name: "AA", color: sc.BLUE, active: true },
+    { name: "AKs", color: sc.YELLOW, active: true },
+    { name: "AQs", color: sc.YELLOW, active: true },
+    { name: "AJs", color: sc.YELLOW, active: true },
+    { name: "ATs", color: sc.YELLOW, active: true },
+    { name: "A9s", color: sc.YELLOW, active: true },
+    { name: "A8s", color: sc.YELLOW, active: true },
+    { name: "A7s", color: sc.YELLOW, active: true },
+    { name: "A6s", color: sc.YELLOW, active: true },
+    { name: "A5s", color: sc.YELLOW, active: true },
+    { name: "A4s", color: sc.YELLOW, active: true },
+    { name: "A3s", color: sc.YELLOW, active: true },
+    { name: "A2s", color: sc.YELLOW, active: true },
+  ],
+
+  [
+    { name: "AKo", color: sc.RED, active: true },
+    { name: "KK", color: sc.BLUE, active: true },
+    { name: "KQs", color: sc.YELLOW, active: true },
+    { name: "KJs", color: sc.YELLOW, active: true },
+    { name: "KTs", color: sc.YELLOW, active: true },
+    { name: "K9s", color: sc.YELLOW, active: true },
+    { name: "K8s", color: sc.YELLOW, active: true },
+    { name: "K7s", color: sc.YELLOW, active: true },
+    { name: "K6s", color: sc.YELLOW, active: false },
+    { name: "K5s", color: sc.YELLOW, active: false },
+    { name: "K4s", color: sc.YELLOW, active: false },
+    { name: "K3s", color: sc.YELLOW, active: false },
+    { name: "K2s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "AQo", color: sc.RED, active: true },
+    { name: "KQo", color: sc.RED, active: true },
+    { name: "QQ", color: sc.BLUE, active: true },
+    { name: "QJs", color: sc.YELLOW, active: true },
+    { name: "QTs", color: sc.YELLOW, active: true },
+    { name: "Q9s", color: sc.YELLOW, active: true },
+    { name: "Q8s", color: sc.YELLOW, active: false },
+    { name: "Q7s", color: sc.YELLOW, active: false },
+    { name: "Q6s", color: sc.YELLOW, active: false },
+    { name: "Q5s", color: sc.YELLOW, active: false },
+    { name: "Q4s", color: sc.YELLOW, active: false },
+    { name: "Q3s", color: sc.YELLOW, active: false },
+    { name: "Q2s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "AJo", color: sc.RED, active: true },
+    { name: "KJo", color: sc.RED, active: true },
+    { name: "QJo", color: sc.RED, active: true },
+    { name: "JJ", color: sc.BLUE, active: true },
+    { name: "JTs", color: sc.YELLOW, active: true },
+    { name: "J9s", color: sc.YELLOW, active: true },
+    { name: "J8s", color: sc.YELLOW, active: false },
+    { name: "J7s", color: sc.YELLOW, active: false },
+    { name: "J6s", color: sc.YELLOW, active: false },
+    { name: "J5s", color: sc.YELLOW, active: false },
+    { name: "J4s", color: sc.YELLOW, active: false },
+    { name: "J3s", color: sc.YELLOW, active: false },
+    { name: "J2s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "ATo", color: sc.RED, active: true },
+    { name: "KTo", color: sc.RED, active: true },
+    { name: "QTo", color: sc.RED, active: true },
+    { name: "JTo", color: sc.RED, active: true },
+    { name: "TT", color: sc.BLUE, active: true },
+    { name: "T9s", color: sc.YELLOW, active: true },
+    { name: "T8s", color: sc.YELLOW, active: true },
+    { name: "T7s", color: sc.YELLOW, active: false },
+    { name: "T6s", color: sc.YELLOW, active: false },
+    { name: "T5s", color: sc.YELLOW, active: false },
+    { name: "T4s", color: sc.YELLOW, active: false },
+    { name: "T3s", color: sc.YELLOW, active: false },
+    { name: "T2s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A9o", color: sc.RED, active: true },
+    { name: "K9o", color: sc.RED, active: true },
+    { name: "Q9o", color: sc.RED, active: true },
+    { name: "J9o", color: sc.RED, active: true },
+    { name: "T9o", color: sc.RED, active: true },
+    { name: "99", color: sc.BLUE, active: true },
+    { name: "98s", color: sc.YELLOW, active: true },
+    { name: "97s", color: sc.YELLOW, active: true },
+    { name: "96s", color: sc.YELLOW, active: false },
+    { name: "95s", color: sc.YELLOW, active: false },
+    { name: "94s", color: sc.YELLOW, active: false },
+    { name: "93s", color: sc.YELLOW, active: false },
+    { name: "92s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A8o", color: sc.RED, active: true },
+    { name: "K8o", color: sc.RED, active: false },
+    { name: "Q8o", color: sc.RED, active: false },
+    { name: "J8o", color: sc.RED, active: false },
+    { name: "T8o", color: sc.RED, active: false },
+    { name: "98o", color: sc.RED, active: false },
+    { name: "88", color: sc.BLUE, active: true },
+    { name: "87s", color: sc.YELLOW, active: true },
+    { name: "86s", color: sc.YELLOW, active: true },
+    { name: "85s", color: sc.YELLOW, active: false },
+    { name: "84s", color: sc.YELLOW, active: false },
+    { name: "83s", color: sc.YELLOW, active: false },
+    { name: "82s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A7o", color: sc.RED, active: false },
+    { name: "K7o", color: sc.RED, active: false },
+    { name: "Q7o", color: sc.RED, active: false },
+    { name: "J7o", color: sc.RED, active: false },
+    { name: "T7o", color: sc.RED, active: false },
+    { name: "97o", color: sc.RED, active: false },
+    { name: "87o", color: sc.RED, active: false },
+    { name: "77", color: sc.BLUE, active: true },
+    { name: "76s", color: sc.YELLOW, active: true },
+    { name: "75s", color: sc.YELLOW, active: true },
+    { name: "74s", color: sc.YELLOW, active: false },
+    { name: "73s", color: sc.YELLOW, active: false },
+    { name: "72s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A6o", color: sc.RED, active: false },
+    { name: "K6o", color: sc.RED, active: false },
+    { name: "Q6o", color: sc.RED, active: false },
+    { name: "J6o", color: sc.RED, active: false },
+    { name: "T6o", color: sc.RED, active: false },
+    { name: "96o", color: sc.RED, active: false },
+    { name: "86o", color: sc.RED, active: false },
+    { name: "76o", color: sc.RED, active: false },
+    { name: "66", color: sc.BLUE, active: true },
+    { name: "65s", color: sc.YELLOW, active: true },
+    { name: "64s", color: sc.YELLOW, active: true },
+    { name: "63s", color: sc.YELLOW, active: false },
+    { name: "62s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A5o", color: sc.RED, active: false },
+    { name: "K5o", color: sc.RED, active: false },
+    { name: "Q5o", color: sc.RED, active: false },
+    { name: "J5o", color: sc.RED, active: false },
+    { name: "T5o", color: sc.RED, active: false },
+    { name: "95o", color: sc.RED, active: false },
+    { name: "85o", color: sc.RED, active: false },
+    { name: "75o", color: sc.RED, active: false },
+    { name: "65o", color: sc.RED, active: false },
+    { name: "55", color: sc.BLUE, active: true },
+    { name: "54s", color: sc.YELLOW, active: true },
+    { name: "53s", color: sc.YELLOW, active: false },
+    { name: "52s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A4o", color: sc.RED, active: false },
+    { name: "K4o", color: sc.RED, active: false },
+    { name: "Q4o", color: sc.RED, active: false },
+    { name: "J4o", color: sc.RED, active: false },
+    { name: "T4o", color: sc.RED, active: false },
+    { name: "94o", color: sc.RED, active: false },
+    { name: "84o", color: sc.RED, active: false },
+    { name: "74o", color: sc.RED, active: false },
+    { name: "64o", color: sc.RED, active: false },
+    { name: "54o", color: sc.RED, active: false },
+    { name: "44", color: sc.BLUE, active: true },
+    { name: "43s", color: sc.YELLOW, active: false },
+    { name: "42s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A3o", color: sc.RED, active: false },
+    { name: "K3o", color: sc.RED, active: false },
+    { name: "Q3o", color: sc.RED, active: false },
+    { name: "J3o", color: sc.RED, active: false },
+    { name: "T3o", color: sc.RED, active: false },
+    { name: "93o", color: sc.RED, active: false },
+    { name: "83o", color: sc.RED, active: false },
+    { name: "73o", color: sc.RED, active: false },
+    { name: "63o", color: sc.RED, active: false },
+    { name: "53o", color: sc.RED, active: false },
+    { name: "43o", color: sc.RED, active: false },
+    { name: "33", color: sc.BLUE, active: true },
+    { name: "32s", color: sc.YELLOW, active: false },
+  ],
+
+  [
+    { name: "A2o", color: sc.RED, active: false },
+    { name: "K2o", color: sc.RED, active: false },
+    { name: "Q2o", color: sc.RED, active: false },
+    { name: "J2o", color: sc.RED, active: false },
+    { name: "T2o", color: sc.RED, active: false },
+    { name: "92o", color: sc.RED, active: false },
+    { name: "82o", color: sc.RED, active: false },
+    { name: "72o", color: sc.RED, active: false },
+    { name: "62o", color: sc.RED, active: false },
+    { name: "52o", color: sc.RED, active: false },
+    { name: "42o", color: sc.RED, active: false },
+    { name: "32o", color: sc.RED, active: false },
+    { name: "22", color: sc.BLUE, active: true },
+  ],
+];
+
+export const boardSquares = [
+  [
+    { name: "Ah", color: sc.RED, active: false },
+    { name: "Ac", color: sc.GREEN, active: false },
+    { name: "Ad", color: sc.BLUE, active: true },
+    { name: "As", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "Kh", color: sc.RED, active: false },
+    { name: "Kc", color: sc.GREEN, active: false },
+    { name: "Kd", color: sc.BLUE, active: false },
+    { name: "Ks", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "Qh", color: sc.RED, active: false },
+    { name: "Qc", color: sc.GREEN, active: false },
+    { name: "Qd", color: sc.BLUE, active: false },
+    { name: "Qs", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "Jh", color: sc.RED, active: false },
+    { name: "Jc", color: sc.GREEN, active: false },
+    { name: "Jd", color: sc.BLUE, active: false },
+    { name: "Js", color: sc.GRAY, active: true },
+  ],
+
+  [
+    { name: "Th", color: sc.RED, active: false },
+    { name: "Tc", color: sc.GREEN, active: false },
+    { name: "Td", color: sc.BLUE, active: false },
+    { name: "Ts", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "9h", color: sc.RED, active: true },
+    { name: "9c", color: sc.GREEN, active: false },
+    { name: "9d", color: sc.BLUE, active: false },
+    { name: "9s", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "8h", color: sc.RED, active: false },
+    { name: "8c", color: sc.GREEN, active: false },
+    { name: "8d", color: sc.BLUE, active: false },
+    { name: "8s", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "7h", color: sc.RED, active: false },
+    { name: "7c", color: sc.GREEN, active: false },
+    { name: "7d", color: sc.BLUE, active: false },
+    { name: "7s", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "6h", color: sc.RED, active: false },
+    { name: "6c", color: sc.GREEN, active: false },
+    { name: "6d", color: sc.BLUE, active: false },
+    { name: "6s", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "5h", color: sc.RED, active: false },
+    { name: "5c", color: sc.GREEN, active: false },
+    { name: "5d", color: sc.BLUE, active: false },
+    { name: "5s", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "4h", color: sc.RED, active: false },
+    { name: "4c", color: sc.GREEN, active: false },
+    { name: "4d", color: sc.BLUE, active: false },
+    { name: "4s", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "3h", color: sc.RED, active: false },
+    { name: "3c", color: sc.GREEN, active: true },
+    { name: "3d", color: sc.BLUE, active: false },
+    { name: "3s", color: sc.GRAY, active: false },
+  ],
+
+  [
+    { name: "2h", color: sc.RED, active: false },
+    { name: "2c", color: sc.GREEN, active: false },
+    { name: "2d", color: sc.BLUE, active: false },
+    { name: "2s", color: sc.GRAY, active: false },
+  ],
+];
+
+export const statisticsDataUpper = [
+  { name: "Straight", value: 13.2 },
+  { name: "Set", value: 9.39 },
+  { name: "Two pair", value: 15.2 },
+  { name: "Top pair", value: 3.79 },
+  { name: "PP below tp", value: 7.91 },
+  { name: "Middle pair", value: 29.7 },
+  { name: "Weak pair", value: 0 },
+  { name: "No made hand", value: 20.9 },
+];
+
+export const statisticsDataLower = [
+  { name: "Flush draw", value: 12.8 },
+  { name: "No flush draw", value: 87.2 },
+  { name: "Oesd", value: 14.2 },
+  { name: "Gutshot", value: 32.9 },
+];

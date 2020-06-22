@@ -7,11 +7,13 @@
 @import './components/layout.scss';
 @import './components/navigation.scss';
 
-//equity-calc component
+//equity-calc components
 @import './components/equity-calculator.scss';
 @import './components/desk.scss';
 @import './components/picker.scss';
 @import './components/cards.scss';
 
-//flop stats component
+//flop stats components
+
+@import './components/slider.scss';
 @import './components/flop-stats.scss';

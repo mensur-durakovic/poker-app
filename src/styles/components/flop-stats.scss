@@ -1,10 +1,417 @@
 .flop-stats {
+  &-container {
+    width: 100%;
+    background-color: $poker-table-background;
+    padding: 50px 20px;
+    color: $white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    overflow-x: auto;
 
-    &-container{
-        width: 100%;
-        height: 100%;
-        background-color: $white;
-        padding: 20px;
-        color: $black;
+    @media (min-width: 768px) {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 80px 50px;
     }
+    @media (min-width: 1025px) {
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: row;
+      padding: 80px 50px;
+    }
+  }
+
+  &-starting-hand {
+    margin-bottom: 55px;
+    min-height: 50px;
+    @media (min-width: 768px) {
+      margin-right: 15px;
+      
+    }
+
+    &-head {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      margin-bottom: 15px;
+      @media (min-width: 768px) {
+        margin-right: 15px;
+        justify-content: center;
+      }
+
+      &-title {
+        font-size: 20px;
+        margin-left: 15px;
+      }
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+
+      &-squares {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 0 5px 5px 0;
+        width: 222px;
+        @media (min-width: 768px) {
+          width: 575px;
+          margin: 0 0 15px 0;
+        }
+      }
+
+      &-slider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        & > span {
+          margin-bottom: 15px;
+          width: 100%;
+          text-align: center;
+        }
+
+        @media (min-width: 768px) {
+          width: 50px;
+        }
+      }
+    }
+
+    &-footer {
+      padding: 0 15px;
+      @media (min-width: 768px) {
+        padding: 0 5px;
+        max-width: 575px;
+      }
+
+      &-slider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+      &-button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &-board {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    @media (min-width: 768px) {
+      width: 180px;
+    }
+
+    &-title{
+      font-size: 20px;
+      min-height: 50px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 55px;
+      @media (min-width: 1025px) {
+        margin: 0 50px;
+      }
+    }
+  }
+
+  &-statistics{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-title{
+      font-size: 20px;
+      min-height: 50px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-body{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      &-upper{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+
+        &-row{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+
+          &-title{
+            color: $white;
+            min-width: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+          }
+        }
+
+        &-bar{
+          min-width: 110px;
+          background-color: $bar-filled-bg;
+        }
+      }
+    }
+  }
+
+  &-square {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    font-size: 8px;
+    color: $black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1px;
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      width: 40px;
+      height: 40px;
+      border-radius: 3px;
+      margin: 2px;
+      font-size: 15px;
+    }
+
+    &-red {
+      background: $red-active-gradient2;
+      background: -moz-linear-gradient(
+        45deg,
+        $red-active-gradient2 0%,
+        $red-inactive-gradient2 100%
+      );
+      background: -webkit-gradient(
+        left bottom,
+        right top,
+        color-stop(0%, $red-active-gradient2),
+        color-stop(100%, $red-inactive-gradient2)
+      );
+      background: -webkit-linear-gradient(
+        45deg,
+        $red-active-gradient2 0%,
+        $red-inactive-gradient2 100%
+      );
+      background: -o-linear-gradient(
+        45deg,
+        $red-active-gradient2 0%,
+        $red-inactive-gradient2 100%
+      );
+      background: -ms-linear-gradient(
+        45deg,
+        $red-active-gradient2 0%,
+        $red-inactive-gradient2 100%
+      );
+      background: linear-gradient(
+        45deg,
+        $red-active-gradient2 0%,
+        $red-inactive-gradient2 100%
+      );
+
+      &-active {
+        background: $red-active-gradient1;
+        background: -moz-linear-gradient(
+          45deg,
+          $red-active-gradient1 0%,
+          $red-active-gradient2 100%
+        );
+        background: -webkit-gradient(
+          left bottom,
+          right top,
+          color-stop(0%, $red-active-gradient1),
+          color-stop(100%, $red-active-gradient2)
+        );
+        background: -webkit-linear-gradient(
+          45deg,
+          $red-active-gradient1 0%,
+          $red-active-gradient2 100%
+        );
+        background: -o-linear-gradient(
+          45deg,
+          $red-active-gradient1 0%,
+          $red-active-gradient2 100%
+        );
+        background: -ms-linear-gradient(
+          45deg,
+          $red-active-gradient1 0%,
+          $red-active-gradient2 100%
+        );
+        background: linear-gradient(
+          45deg,
+          $red-active-gradient1 0%,
+          $red-active-gradient2 100%
+        );
+      }
+    }
+
+    &-blue {
+      background: $blue-inactive-gradient1;
+      background: -moz-linear-gradient(45deg, $blue-inactive-gradient1 0%, $blue-inactive-gradient2 100%);
+      background: -webkit-gradient(left bottom, right top, color-stop(0%, $blue-inactive-gradient1), color-stop(100%, $blue-inactive-gradient2));
+      background: -webkit-linear-gradient(45deg, $blue-inactive-gradient1 0%, $blue-inactive-gradient2 100%);
+      background: -o-linear-gradient(45deg, $blue-inactive-gradient1 0%, $blue-inactive-gradient2 100%);
+      background: -ms-linear-gradient(45deg, $blue-inactive-gradient1 0%, $blue-inactive-gradient2 100%);
+      background: linear-gradient(45deg, $blue-inactive-gradient1 0%, $blue-inactive-gradient2 100%);
+      color: $black;
+
+      &-active {
+        color: $white;
+        background: $blue-active-gradient1;
+        background: -moz-linear-gradient(
+          45deg,
+          $blue-active-gradient1 0%,
+          $blue-active-gradient2 100%
+        );
+        background: -webkit-gradient(
+          left bottom,
+          right top,
+          color-stop(0%, $blue-active-gradient1),
+          color-stop(100%, $blue-active-gradient2)
+        );
+        background: -webkit-linear-gradient(
+          45deg,
+          $blue-active-gradient1 0%,
+          $blue-active-gradient2 100%
+        );
+        background: -o-linear-gradient(
+          45deg,
+          $blue-active-gradient1 0%,
+          $blue-active-gradient2 100%
+        );
+        background: -ms-linear-gradient(
+          45deg,
+          $blue-active-gradient1 0%,
+          $blue-active-gradient2 100%
+        );
+        background: linear-gradient(
+          45deg,
+          $blue-active-gradient1 0%,
+          $blue-active-gradient2 100%
+        );
+      }
+    }
+
+    &-yellow {
+      background: $yellow-inactive-gradient1;
+background: -moz-linear-gradient(45deg, $yellow-inactive-gradient1 0%, $yellow-inactive-gradient2 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, $yellow-inactive-gradient1), color-stop(100%, $yellow-inactive-gradient2));
+background: -webkit-linear-gradient(45deg, $yellow-inactive-gradient1 0%, $yellow-inactive-gradient2 100%);
+background: -o-linear-gradient(45deg, $yellow-inactive-gradient1 0%, $yellow-inactive-gradient2 100%);
+background: -ms-linear-gradient(45deg, $yellow-inactive-gradient1 0%, $yellow-inactive-gradient2 100%);
+background: linear-gradient(45deg, $yellow-inactive-gradient1 0%, $yellow-inactive-gradient2 100%);
+      &-active {
+        background: $yellow-active-gradient1;
+        background: -moz-linear-gradient(45deg, $yellow-active-gradient1 0%, $yellow-active-gradient2 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, $yellow-active-gradient1), color-stop(100%, $yellow-active-gradient2));
+        background: -webkit-linear-gradient(45deg, $yellow-active-gradient1 0%, $yellow-active-gradient2 100%);
+        background: -o-linear-gradient(45deg, $yellow-active-gradient1 0%, $yellow-active-gradient2 100%);
+        background: -ms-linear-gradient(45deg, $yellow-active-gradient1 0%, $yellow-active-gradient2 100%);
+        background: linear-gradient(45deg, $yellow-active-gradient1 0%, $yellow-active-gradient2 100%);
+      }
+    }
+
+    &-green {
+      background: $green-inactive-gradient1;
+      background: -moz-linear-gradient(45deg, $green-inactive-gradient1 0%, $green-inactive-gradient2 100%);
+      background: -webkit-gradient(left bottom, right top, color-stop(0%, $green-inactive-gradient1), color-stop(100%, $green-inactive-gradient2));
+      background: -webkit-linear-gradient(45deg, $green-inactive-gradient1 0%, $green-inactive-gradient2 100%);
+      background: -o-linear-gradient(45deg, $green-inactive-gradient1 0%, $green-inactive-gradient2 100%);
+      background: -ms-linear-gradient(45deg, $green-inactive-gradient1 0%, $green-inactive-gradient2 100%);
+      background: linear-gradient(45deg, $green-inactive-gradient1 0%, $green-inactive-gradient2 100%);
+      &-active {
+        background: $green-active-gradient1;
+        background: -moz-linear-gradient(45deg, $green-active-gradient1 0%, $green-active-gradient2 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, $green-active-gradient1), color-stop(100%, $green-active-gradient2));
+        background: -webkit-linear-gradient(45deg, $green-active-gradient1 0%, $green-active-gradient2 100%);
+        background: -o-linear-gradient(45deg, $green-active-gradient1 0%, $green-active-gradient2 100%);
+        background: -ms-linear-gradient(45deg, $green-active-gradient1 0%, $green-active-gradient2 100%);
+        background: linear-gradient(45deg, $green-active-gradient1 0%, $green-active-gradient2 100%);
+      }
+    }
+
+    &-gray {
+      background: $gray-inactive-gradient1;
+      background: -moz-linear-gradient(45deg, $gray-inactive-gradient1 0%, $gray-inactive-gradient2 100%);
+      background: -webkit-gradient(left bottom, right top, color-stop(0%, $gray-inactive-gradient1), color-stop(100%, $gray-inactive-gradient2));
+      background: -webkit-linear-gradient(45deg, $gray-inactive-gradient1 0%, $gray-inactive-gradient2 100%);
+      background: -o-linear-gradient(45deg, $gray-inactive-gradient1 0%, $gray-inactive-gradient2 100%);
+      background: -ms-linear-gradient(45deg, $gray-inactive-gradient1 0%, $gray-inactive-gradient2 100%);
+      background: linear-gradient(45deg, $gray-inactive-gradient1 0%, $gray-inactive-gradient2 100%);
+      &-active {
+        color: $white;
+        background: $gray-active-gradient1;
+        background: -moz-linear-gradient(45deg, $gray-active-gradient1 0%, $gray-active-gradient2 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, $gray-active-gradient1), color-stop(100%, $gray-active-gradient2));
+        background: -webkit-linear-gradient(45deg, $gray-active-gradient1 0%, $gray-active-gradient2 100%);
+        background: -o-linear-gradient(45deg, $gray-active-gradient1 0%, $gray-active-gradient2 100%);
+        background: -ms-linear-gradient(45deg, $gray-active-gradient1 0%, $gray-active-gradient2 100%);
+        background: linear-gradient(45deg, $gray-active-gradient1 0%, $gray-active-gradient2 100%);
+      }
+    }
+  }
+}
+
+.poker-button {
+  background-color: $button-green;
+  outline: none;
+  color: $white;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  border-radius: 5px;
+  min-height: 35px;
+  margin: 5px;
+  cursor: pointer;
+  border: 0;
+  font-size: 15px;
+
+  &:hover {
+    background-color: $button-green-hover;
+  }
 }

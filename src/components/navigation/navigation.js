@@ -28,7 +28,7 @@ function Navigation(props) {
       }}
     >
       <SideNav.Toggle className="poker-navigation-toggle" />
-      <SideNav.Nav defaultSelected={EQUITY_CALC.keyName}>
+      <SideNav.Nav defaultSelected={FLOP_STATS.keyName}>
         <NavItem
           eventKey={EQUITY_CALC.keyName}
           navitemClassName={`poker-navigation-navitem${

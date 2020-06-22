@@ -10,7 +10,6 @@ import * as actions from "../store/actions/index";
 export default function EquityCalculatorPage() {
     const dispatch = useDispatch();
     const resetCardsHandler = () => {
-        console.log("resetCardsHandler!");
         dispatch(actions.resetCards());
     }
 

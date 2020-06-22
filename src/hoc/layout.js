@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Navigation from "../components/navigation/navigation";
 import EquityCalculatorPage from "../pages/equityCalculatorPage";
-import FlopStats from "../components/flopStats/flopStats";
+import FlopStatsPage from "../pages/flopStatsPage";
 import { EQUITY_CALC, FLOP_STATS } from "../constants/navigation";
 
 export default function Layout() {
   const [expanded, setExpanded] = useState(false);
-  const [activeItem, setActiveItem] = useState(EQUITY_CALC.keyName);
+  const [activeItem, setActiveItem] = useState(FLOP_STATS.keyName);
 
   const toggleNavigation = () => {
     const oldValue = expanded;
@@ -18,7 +18,7 @@ export default function Layout() {
       case EQUITY_CALC.keyName:
         return <EquityCalculatorPage />;
       case FLOP_STATS.keyName:
-        return <FlopStats />;
+        return <FlopStatsPage />;
       default:
         return <EquityCalculatorPage />;
     }

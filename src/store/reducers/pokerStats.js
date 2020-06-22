@@ -57,7 +57,7 @@ const setActiveCard = (state, action) => {
     desk: { cards: [...state.deskState.desk.cards], active: [0, 0, 0, 0, 0] },
   };
   const oldValue = state.deskState[action.place].active[action.position];
-  newDeskState[action.place].active[action.position] = oldValue === 1 ? 0 : 1;
+  newDeskState[action.place].active[action.position] = 1;
   console.log("newDeskState", newDeskState);
   return updateObject(state, {
     deskState: newDeskState,

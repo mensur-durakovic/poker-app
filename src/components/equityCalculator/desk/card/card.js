@@ -7,14 +7,10 @@ import * as actions from "../../../../store/actions/index";
 
 export default function Card(props) {
   const dispatch = useDispatch();
-  const activePlace = useSelector((state) => state.activePlace);
   const deskState = useSelector((state) => state.deskState);
-  const activePosition = useSelector((state) => state.activePosition);
-  const pickedCardId = useSelector((state) => state.pickedCardId);
   const { central, title, active, place, position } = props;
 
   const cardClickedHandler = () => {
-    console.log("cardClickedHandler", place, position);
     dispatch(actions.setActiveDeskCard(place, position));
   }
 

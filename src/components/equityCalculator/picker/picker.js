@@ -8,7 +8,7 @@ export default function Picker(props) {
 
   const cardClickHandler = (cardId) => {
     console.log(cardId);
-    for (let [key, value] of Object.entries(deskState)) {
+    for (let [key,] of Object.entries(deskState)) {
       const cardFound = deskState[key].cards.find((c) => c === cardId);
       if (cardFound) {
         return;
@@ -18,7 +18,7 @@ export default function Picker(props) {
   };
 
   const isAlreadyLocked = (cardId) => {
-    for (let [key, value] of Object.entries(deskState)) {
+    for (let [key,] of Object.entries(deskState)) {
       const cardFound = deskState[key].cards.find((c) => c === cardId);
       if (cardFound) {
         return true;

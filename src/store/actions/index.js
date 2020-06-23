@@ -4,4 +4,6 @@ export {
   resetCards,
   randomizeBoard,
   clearBoard,
+  toggleSquare,
+  clearStartingHandBoard
 } from "./pokerStats";

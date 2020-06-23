@@ -27,8 +27,20 @@ export const randomizeBoard = () => {
   };
 };
 export const clearBoard = () => {
-  console.log("clearBoard called");
   return {
     type: actionTypes.CLEAR_BOARD,
+  };
+};
+
+export const toggleSquare = (rowIndex, squareIndex) => {
+  return {
+    type: actionTypes.TOGGLE_SQUARE,
+    rowIndex: rowIndex,
+    squareIndex: squareIndex
+  };
+};
+export const clearStartingHandBoard = () => {
+  return {
+    type: actionTypes.CLEAR_STARTING_HAND_BOARD,
   };
 };

@@ -1,6 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../utils/reduxUtils";
-import { boardSquares } from '../../utils/flopStatsData';
+import { boardSquares, startingHandSquares } from "../../utils/flopStatsData";
 
 const cleanDesk = {
   player1: { cards: ["", ""], active: [0, 1] },
@@ -20,7 +20,8 @@ const initialState = {
   pickedCardId: "",
   activePlace: "player1",
   activePosition: 1,
-  flopStatsBoard: boardSquares
+  flopStatsBoard: boardSquares,
+  flopStatsStartingHandBoard: startingHandSquares,
 };
 
 const pickCard = (state, action) => {
@@ -66,29 +67,50 @@ const setActiveCard = (state, action) => {
 };
 
 const resetCards = (state, action) => {
-  const newDeskState = {...cleanDesk};
+  const newDeskState = { ...cleanDesk };
   return updateObject(state, {
     deskState: newDeskState,
   });
 };
 
 const clearBoard = (state, action) => {
-  const newBoard = boardSquares.map(row => row.map(square => ({...square, active: false})));
+  const newBoard = boardSquares.map((row) =>
+    row.map((square) => ({ ...square, active: false }))
+  );
   return updateObject(state, {
     flopStatsBoard: newBoard,
   });
 };
 
-const randomizeBoard = (state, action) => {
+const clearStartingHandBoard = (state, action) => {
+  const newStartingHandBoard = startingHandSquares.map((row) =>
+    row.map((square) => ({ ...square, active: false }))
+  );
+  return updateObject(state, {
+    flopStatsStartingHandBoard: newStartingHandBoard,
+  });
+};
+const toggleSquare = (state, action) => {
+  const newStartingHandBoard = [...state.flopStatsStartingHandBoard];
+  const oldValue = state.flopStatsStartingHandBoard[action.rowIndex][action.squareIndex].active;
+  newStartingHandBoard[action.rowIndex][action.squareIndex].active = !oldValue;
+  return updateObject(state, {
+    flopStatsStartingHandBoard: newStartingHandBoard,
+  });
+};
 
-  // min and max included 
-  const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+const randomizeBoard = (state, action) => {
+  // min and max included
+  const randomIntFromInterval = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
 
   const random1 = randomIntFromInterval(0, 12);
   const random2 = randomIntFromInterval(0, 12);
   const random3 = randomIntFromInterval(0, 12);
   const random4 = randomIntFromInterval(0, 12);
-  const newBoard = boardSquares.map(row => row.map(square => ({...square, active: false})));
+  const newBoard = boardSquares.map((row) =>
+    row.map((square) => ({ ...square, active: false }))
+  );
   newBoard[random1][0].active = true;
   newBoard[random2][1].active = true;
   newBoard[random3][2].active = true;
@@ -96,7 +118,6 @@ const randomizeBoard = (state, action) => {
   return updateObject(state, {
     flopStatsBoard: newBoard,
   });
-
 };
 
 const reducer = (state = initialState, action) => {
@@ -111,6 +132,10 @@ const reducer = (state = initialState, action) => {
       return clearBoard(state, action);
     case actionTypes.RANDOMIZE_BOARD:
       return randomizeBoard(state, action);
+    case actionTypes.CLEAR_STARTING_HAND_BOARD:
+      return clearStartingHandBoard(state, action);
+    case actionTypes.TOGGLE_SQUARE:
+      return toggleSquare(state, action);
     default:
       return state;
   }

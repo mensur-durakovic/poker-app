@@ -45,7 +45,6 @@ const pickCard = (state, action) => {
 };
 
 const setActiveCard = (state, action) => {
-  console.log(action);
   const newDeskState = {
     player1: { cards: [...state.deskState.player1.cards], active: [0, 0] },
     player2: { cards: [...state.deskState.player2.cards], active: [0, 0] },
@@ -67,18 +66,7 @@ const setActiveCard = (state, action) => {
 };
 
 const resetCards = (state, action) => {
-  const newDeskState = {
-    player1: { cards: ["", ""], active: [0, 0] },
-    player2: { cards: ["", ""], active: [0, 0] },
-    player3: { cards: ["", ""], active: [0, 0] },
-    player4: { cards: ["", ""], active: [0, 0] },
-    player5: { cards: ["", ""], active: [0, 0] },
-    player6: { cards: ["", ""], active: [0, 0] },
-    player7: { cards: ["", ""], active: [0, 0] },
-    player8: { cards: ["", ""], active: [0, 0] },
-    player9: { cards: ["", ""], active: [0, 0] },
-    desk: { cards: ["", "", "", "", ""], active: [0, 0, 0, 0, 0] },
-  };
+  const newDeskState = {...cleanDesk};
   return updateObject(state, {
     deskState: newDeskState,
   });
@@ -92,16 +80,14 @@ const clearBoard = (state, action) => {
 };
 
 const randomizeBoard = (state, action) => {
+
   // min and max included 
   const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
   const random1 = randomIntFromInterval(0, 12);
   const random2 = randomIntFromInterval(0, 12);
   const random3 = randomIntFromInterval(0, 12);
   const random4 = randomIntFromInterval(0, 12);
-  console.log("random1", random1);
-  console.log("random2", random2);
-  console.log("random3", random3);
-  console.log("random4", random4);
   const newBoard = boardSquares.map(row => row.map(square => ({...square, active: false})));
   newBoard[random1][0].active = true;
   newBoard[random2][1].active = true;

@@ -4,7 +4,7 @@ import SliderHorizontal from "./sliderHorizontal";
 import Square from "./square";
 import { startingHandSquares } from "../../utils/flopStatsData";
 
-export default function StartingHand() {
+  const StartingHand = React.memo((props) => {
   return (
     <section className="flop-stats-starting-hand">
       <div className="flop-stats-starting-hand-head">
@@ -33,4 +33,6 @@ export default function StartingHand() {
       </div>
     </section>
   );
-}
+});
+
+export default StartingHand;

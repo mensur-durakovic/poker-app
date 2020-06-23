@@ -15,7 +15,7 @@ import {
 } from "../../../constants/desk";
 import { useSelector } from "react-redux";
 
-export default function Desk() {
+const Desk = React.memo((props) => {
   const player1State = useSelector((state) => state.deskState.player1.active);
   const player2State = useSelector((state) => state.deskState.player2.active);
   const player3State = useSelector((state) => state.deskState.player3.active);
@@ -129,4 +129,6 @@ export default function Desk() {
       </div>
     </div>
   );
-}
+});
+
+export default Desk;

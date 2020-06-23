@@ -3,7 +3,7 @@ import Square from "./square";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-export default function Board() {
+const Board = React.memo((props) => {
   const flopStatsBoard = useSelector((state) => state.flopStatsBoard);
   const dispatch = useDispatch();
   const clearBoardHandler = () => {
@@ -37,4 +37,6 @@ export default function Board() {
       </button>
     </section>
   );
-}
+});
+
+export default Board;

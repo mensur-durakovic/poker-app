@@ -1,21 +1,17 @@
-import React from 'react';
-import Picker from './picker';
-import { ALL_CARDS } from '../../../utils/cardImagesLoader';
+import React from "react";
+import Picker from "./picker";
+import { ALL_CARDS } from "../../../utils/cardImagesLoader";
 
-export default function PickersWrapper() {
-
-    const generatePickers = () => {
-        const pickers = [];
-        for (let [key, value] of Object.entries(ALL_CARDS)) {
-            const picker = <Picker suit={value.suit} cards={value.allCards} key={key}/>;
-            pickers.push(picker);
-        }
-        return pickers;
+const PickersWrapper = React.memo((props) => {
+  const generatePickers = () => {
+    const pickers = [];
+    for (let [key, value] of Object.entries(ALL_CARDS)) {
+      pickers.push(<Picker suit={value.suit} cards={value.allCards} key={key} />);
     }
+    return pickers;
+  };
 
-    return (
-        <div className='picker-wrapper'>
-          {generatePickers()}  
-        </div>
-    )
-}
+  return <div className="picker-wrapper">{generatePickers()}</div>;
+});
+
+export default PickersWrapper;

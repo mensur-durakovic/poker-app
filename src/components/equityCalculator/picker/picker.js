@@ -9,7 +9,6 @@ const Picker = React.memo((props) => {
   const { suit, cards } = props;
 
   const cardClickHandler = (cardId) => {
-    console.log(cardId);
     for (let [key] of Object.entries(deskState)) {
       const cardFound = deskState[key].cards.find((c) => c === cardId);
       if (cardFound) {

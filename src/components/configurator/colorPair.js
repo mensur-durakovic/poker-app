@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styled from "styled-components";
 
@@ -13,38 +13,38 @@ const FilledDiv = styled.div`
 
 export default function ColorPair(props) {
   const {
-    colorData,
+    firstColorData,
+    secondColorData,
     activeColorData,
     setActiveColor,
   } = props;
 
-  const isActive = (colorId, colorType, colorValue) => {
-      return activeColorData.colorId === colorId 
-      && activeColorData.colorType === colorType 
-      && activeColorData.colorValue === colorValue;
+  const isActive = (colorId, colorType) => {
+      return activeColorData.id === colorId 
+      && activeColorData.type === colorType;
   }
 
   return (
     <div className="color-pair">
       <div
         className="color-pair-square"
-        onClick={() => setActiveColor(colorData.id, 1, colorData.active)}
+        onClick={() => setActiveColor(firstColorData.id, firstColorData.type)}
       >
         <FilledDiv
-          fillColor={colorData.active}
-          className={isActive(colorData.id, 1, colorData.active) ? "color-pair-square-active" : ""}
+          fillColor={firstColorData.value}
+          className={isActive(firstColorData.id, firstColorData.type) ? "color-pair-square-active" : ""}
         />
-        <div className="color-pair-square-title">{colorData.activeName}</div>
+        <div className="color-pair-square-title">{firstColorData.name}</div>
       </div>
       <div
         className="color-pair-square"
-        onClick={() => setActiveColor(colorData.id, 2, colorData.inactive)}
+        onClick={() => setActiveColor(secondColorData.id, secondColorData.type )}
       >
         <FilledDiv
-          fillColor={colorData.inactive}
-          className={isActive(colorData.id, 2, colorData.inactive) ? "color-pair-square-active" : ""}
+          fillColor={secondColorData.value}
+          className={isActive(secondColorData.id, secondColorData.type) ? "color-pair-square-active" : ""}
         />
-        <div className="color-pair-square-title">{colorData.inactiveName}</div>
+        <div className="color-pair-square-title">{secondColorData.name}</div>
       </div>
     </div>
   );

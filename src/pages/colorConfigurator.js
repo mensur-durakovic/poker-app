@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { SketchPicker } from "react-color";
 import ColorPair from "../components/configurator/colorPair";
 
@@ -7,42 +7,38 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function ColorConfigurator() {
   const colors = useSelector((state) => state.colors);
-  const activeColorData = useSelector((state) => state.activeColorData);
-  console.log("colors", colors);
-/*   const [activeColorData, setActiveColorData] = useState({
-    colorId: colors[0].id,
-    colorType: 0,
-    colorValue: colors[0].active,
-  }); */
+  const activeColor = useSelector((state) => state.activeColor);
   const dispatch = useDispatch();
 
-  const activeColorHandler = (colorId, colorType, colorValue) => {
-      console.log("activeColorHandler", colorId, colorType, colorValue);
-      dispatch(actions.setActiveColor(colorId, colorType, colorValue));
+  const activeColorHandler = (colorId, colorType) => {
+    dispatch(actions.setActiveColor(colorId, colorType));
   };
 
   const handleChange = (color) => {
+    dispatch(actions.changeColor(color.hex));
+  };
 
-    dispatch(actions.setActiveColor(activeColorData.colorId, activeColorData.colorType, color));
+  const getMappedColors = () => {
+    const mappedColors = [];
+    for (let i = 0; i < colors.length; i += 2) {
+      const pair = (
+        <ColorPair
+          firstColorData={colors[i]}
+          secondColorData={colors[i + 1]}
+          key={colors[i].id}
+          activeColorData={activeColor}
+          setActiveColor={activeColorHandler}
+        />
+      );
+      mappedColors.push(pair);
+    }
+    return mappedColors;
   };
 
   return (
     <div className="configurator-container">
-      <SketchPicker
-        color={activeColorData.colorValue}
-        onChange={handleChange}
-      />
-      <div className="configurator-colors">
-        {colors &&
-          colors.map((c) => (
-            <ColorPair
-              colorData={c}
-              key={c.id}
-              activeColorData={activeColorData}
-              setActiveColor={activeColorHandler}
-            />
-          ))}
-      </div>
+      <SketchPicker color={activeColor.value} onChange={handleChange} />
+      <div className="configurator-colors">{colors && getMappedColors()}</div>
     </div>
   );
 }

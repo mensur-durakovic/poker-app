@@ -23,12 +23,12 @@ const initialState = {
   activePosition: 1,
   flopStatsBoard: boardSquares,
   flopStatsStartingHandBoard: startingHandSquares,
-  colors: ALL_COLORS,
-  activeColorData: {
-    colorId: ALL_COLORS[0].id,
-    colorType: 0,
-    colorValue: ALL_COLORS[0].active,
-  }
+  colors: [...ALL_COLORS],
+  activeColor: {
+    id: ALL_COLORS[0].id,
+    type: ALL_COLORS[0].type,
+    value: ALL_COLORS[0].value,
+  },
 };
 
 const pickCard = (state, action) => {
@@ -99,7 +99,9 @@ const clearStartingHandBoard = (state, action) => {
 };
 const toggleSquare = (state, action) => {
   const newStartingHandBoard = [...state.flopStatsStartingHandBoard];
-  const oldValue = state.flopStatsStartingHandBoard[action.rowIndex][action.squareIndex].active;
+  const oldValue =
+    state.flopStatsStartingHandBoard[action.rowIndex][action.squareIndex]
+      .active;
   newStartingHandBoard[action.rowIndex][action.squareIndex].active = !oldValue;
   return updateObject(state, {
     flopStatsStartingHandBoard: newStartingHandBoard,
@@ -128,35 +130,33 @@ const randomizeBoard = (state, action) => {
 };
 
 const setActiveColor = (state, action) => {
-  const { colorId, colorType, colorValue } = action;
-  const updatedValues = state.colors.find(c => c.id === colorId);
-  console.log("updatedValues", updatedValues);
-  const filtered = state.colors.filter(c => c.id !== colorId);
-  console.log("filtered", filtered);
-  if(colorType === 0){
-    updatedValues.active = colorValue; 
-  }else if(colorType === 1){
-    updatedValues.inactive = colorValue;
-  }
+  const { colorId, colorType } = action;
+
+  const newActiveColor = state.colors.find(
+    (c) => c.id === colorId && c.type === colorType
+  );
 
   return updateObject(state, {
-    colors: [...filtered, updatedValues],
+    activeColor: newActiveColor,
   });
 };
 const changeColor = (state, action) => {
-  const { colorId, colorType, colorValue } = action;
-  const updatedValues = state.colors.find(c => c.id === colorId);
-  console.log("updatedValues", updatedValues);
-  const filtered = state.colors.filter(c => c.id !== colorId);
-  console.log("filtered", filtered);
-  if(colorType === 0){
-    updatedValues.active = colorValue; 
-  }else if(colorType === 1){
-    updatedValues.inactive = colorValue;
+  const { colorValue } = action;
+  const { activeColor, colors } = state;
+  const newColors = [...colors];
+
+  for (let i = 0; i < newColors.length; i++) {
+    if (
+      newColors[i].id === activeColor.id &&
+      newColors[i].type === activeColor.type
+    ) {
+      newColors[i].value = colorValue;
+    }
   }
 
   return updateObject(state, {
-    colors: [...filtered, updatedValues],
+    colors: newColors,
+    activeColor: { ...activeColor, value: colorValue },
   });
 };
 

@@ -10,4 +10,8 @@ export const RANGE_CREATOR = Object.freeze({
   keyName: "RANGE_CREATOR",
   text: "Range creator",
 });
+export const SETTINGS = Object.freeze({
+  keyName: "SETTINGS",
+  text: "Settings",
+});
 export const ACCOUNT = Object.freeze({ keyName: "ACCOUNT", text: "Account" });

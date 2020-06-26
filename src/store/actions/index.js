@@ -5,5 +5,7 @@ export {
   randomizeBoard,
   clearBoard,
   toggleSquare,
-  clearStartingHandBoard
+  clearStartingHandBoard,
+  setActiveColor,
+  changeColor,
 } from "./pokerStats";

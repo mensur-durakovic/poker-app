@@ -67,7 +67,7 @@
         margin: 0 5px 5px 0;
         width: 222px;
         @media (min-width: 768px) {
-          width: 575px;
+          width: 445px;
           margin: 0 0 15px 0;
         }
       }
@@ -121,7 +121,7 @@
     flex-wrap: wrap;
     margin-bottom: 15px;
     @media (min-width: 768px) {
-      width: 180px;
+      width: 140px;
     }
 
     &-title{
@@ -211,8 +211,8 @@
     cursor: pointer;
 
     @media (min-width: 768px) {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border-radius: 3px;
       margin: 2px;
       font-size: 15px;

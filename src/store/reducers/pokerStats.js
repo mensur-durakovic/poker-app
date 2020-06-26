@@ -1,6 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../utils/reduxUtils";
 import { boardSquares, startingHandSquares } from "../../utils/flopStatsData";
+import { ALL_COLORS } from "../../utils/configurator";
 
 const cleanDesk = {
   player1: { cards: ["", ""], active: [0, 1] },
@@ -22,6 +23,12 @@ const initialState = {
   activePosition: 1,
   flopStatsBoard: boardSquares,
   flopStatsStartingHandBoard: startingHandSquares,
+  colors: ALL_COLORS,
+  activeColorData: {
+    colorId: ALL_COLORS[0].id,
+    colorType: 0,
+    colorValue: ALL_COLORS[0].active,
+  }
 };
 
 const pickCard = (state, action) => {
@@ -120,6 +127,39 @@ const randomizeBoard = (state, action) => {
   });
 };
 
+const setActiveColor = (state, action) => {
+  const { colorId, colorType, colorValue } = action;
+  const updatedValues = state.colors.find(c => c.id === colorId);
+  console.log("updatedValues", updatedValues);
+  const filtered = state.colors.filter(c => c.id !== colorId);
+  console.log("filtered", filtered);
+  if(colorType === 0){
+    updatedValues.active = colorValue; 
+  }else if(colorType === 1){
+    updatedValues.inactive = colorValue;
+  }
+
+  return updateObject(state, {
+    colors: [...filtered, updatedValues],
+  });
+};
+const changeColor = (state, action) => {
+  const { colorId, colorType, colorValue } = action;
+  const updatedValues = state.colors.find(c => c.id === colorId);
+  console.log("updatedValues", updatedValues);
+  const filtered = state.colors.filter(c => c.id !== colorId);
+  console.log("filtered", filtered);
+  if(colorType === 0){
+    updatedValues.active = colorValue; 
+  }else if(colorType === 1){
+    updatedValues.inactive = colorValue;
+  }
+
+  return updateObject(state, {
+    colors: [...filtered, updatedValues],
+  });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.PICK_CARD:
@@ -136,6 +176,10 @@ const reducer = (state = initialState, action) => {
       return clearStartingHandBoard(state, action);
     case actionTypes.TOGGLE_SQUARE:
       return toggleSquare(state, action);
+    case actionTypes.SET_ACTIVE_COLOR:
+      return setActiveColor(state, action);
+    case actionTypes.CHANGE_COLOR:
+      return changeColor(state, action);
     default:
       return state;
   }

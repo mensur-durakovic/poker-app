@@ -44,3 +44,20 @@ export const clearStartingHandBoard = () => {
     type: actionTypes.CLEAR_STARTING_HAND_BOARD,
   };
 };
+
+export const setActiveColor = (colorId, colorType, colorValue) => {
+  return {
+    type: actionTypes.SET_ACTIVE_COLOR,
+    colorId,
+    colorType,
+    colorValue
+  };
+};
+export const changeColor = (colorId, colorType, colorValue) => {
+  return {
+    type: actionTypes.CHANGE_COLOR,
+    colorId,
+    colorType,
+    colorValue
+  };
+};

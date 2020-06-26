@@ -7,12 +7,14 @@ import {
   faDice,
   faChartBar,
   faUser,
+  faCog
 } from "@fortawesome/free-solid-svg-icons";
 import {
   EQUITY_CALC,
   FLOP_STATS,
   RANGE_CREATOR,
   ACCOUNT,
+  SETTINGS
 } from "../../constants/navigation";
 
 function Navigation(props) {
@@ -23,7 +25,6 @@ function Navigation(props) {
       expanded={expanded}
       onToggle={toggleNavigation}
       onSelect={(selected) => {
-        console.log("selected", selected);
         setActiveItem(selected);
       }}
     >
@@ -67,6 +68,17 @@ function Navigation(props) {
             <FontAwesomeIcon icon={faDice} className="poker-navigation-icon" />
           </NavIcon>
           <NavText>{RANGE_CREATOR.text}</NavText>
+        </NavItem>
+        <NavItem
+          eventKey={SETTINGS.keyName}
+          navitemClassName={`poker-navigation-navitem${
+            activeItem === SETTINGS.keyName ? "-active" : ""
+          }`}
+        >
+          <NavIcon>
+            <FontAwesomeIcon icon={faCog} className="poker-navigation-icon" />
+          </NavIcon>
+          <NavText>{SETTINGS.text}</NavText>
         </NavItem>
         <NavItem
           eventKey={ACCOUNT.keyName}

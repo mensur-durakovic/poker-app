@@ -7,7 +7,7 @@ import { EQUITY_CALC, FLOP_STATS, SETTINGS } from "../constants/navigation";
 
 export default function Layout() {
   const [expanded, setExpanded] = useState(false);
-  const [activeItem, setActiveItem] = useState(SETTINGS.keyName);
+  const [activeItem, setActiveItem] = useState(EQUITY_CALC.keyName);
 
   const toggleNavigation = () => {
     const oldValue = expanded;
